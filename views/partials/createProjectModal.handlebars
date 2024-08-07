@@ -1,0 +1,25 @@
+<!-- Modal for "New Project" button -->
+
+<div class="modal fade" id="newProjectModal" tabindex="-1" aria-labelledby="newProjectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="newProjectModalLabel">Create a New Project</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="new-project-form">
+          <div class="mb-3">
+            <label for="project-name" class="form-label">Project Name</label>
+            <input type="text" class="form-control" id="project-name" placeholder="Enter project name">
+          </div>
+          <div class="mb-3">
+            <label for="due-date" class="form-label">Due Date</label>
+            <input type="date" class="form-control" id="due-date">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Create Project</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
