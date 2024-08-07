@@ -1,0 +1,32 @@
+<!-- New Task Modal -->
+<div class="modal fade" id="newTaskModal" tabindex="-1" aria-labelledby="newTaskModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="newTaskModalLabel">Create a New Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="new-task-form">
+          <div class="mb-3">
+            <label for="task-name" class="form-label text-dark">Task Name</label>
+            <input type="text" class="form-control" id="task-name" placeholder="Enter task name">
+          </div>
+          <div class="mb-3">
+            <label for="task-due-date" class="form-label text-dark">Due Date</label>
+            <input type="date" class="form-control" id="task-due-date">
+          </div>
+           <div class="mb-3">
+            <label for="task-description" class="form-label text-dark">Task Description</label>
+            <input type="date" class="form-control" id="task-due-date">
+          </div>
+           <div class="mb-3">
+            <label for="project-name" class="form-label text-dark">Project Name </label>     {{!--//Will change it options later after mvp// --}}
+            <input type="date" class="form-control" id="task-due-date">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Create Task</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
