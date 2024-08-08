@@ -1,5 +1,6 @@
 const express = require("express");
 const session = require("express-session");
+const bodyParser = require('body-parser');
 const exphbs = require("express-handlebars");
 const path = require("path"); // to use path.join
 
@@ -26,6 +27,7 @@ const sess = {
 app.use(session(sess));
 
 // Middleware for parsing request bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -53,6 +55,22 @@ app.delete('/api/users/logout', (req, res) => {
 
 // Use your routes
 app.use("/", allRoutes);
+
+// Route to render the form page
+app.get('/', (req, res) => {
+  res.render('newTaskModal');
+});
+
+// Route to handle form submission
+app.post('/task', (req, res) => {
+  const { taskName, taskDueDate, taskDescription, projectName } = req.body;
+  res.render('task', {
+    taskName,
+    taskDueDate,
+    taskDescription,
+    projectName
+  });
+});
 
 // Start the server
 sequelize.sync({ force: false }).then(() => {

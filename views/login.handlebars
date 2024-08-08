@@ -1,3 +1,7 @@
+<div class="heading-container">
+    <h1 class="heading-title"><i class="fa fa-calendar"></i> ON IT</h1>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark"/>
 <div class="container-fluid p-0">
   <div class="full-page-image">
     <img src="/public/images/background.png" alt="Calendar-background" class="img-fluid w-100 h-100">
@@ -21,31 +25,8 @@
 </div>
 
 
-<!-- Modal for the "Create Account button" -->
-<div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="createAccountModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-sm">
-    <div class="modal-content">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title" id="createAccountModalLabel">Create Account</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="create-account-form">
-          <div class="mb-3">
-            <label for="new-username" class="form-label text-dark">Username</label>
-            <input type="text" class="form-control" id="new-username" placeholder="Enter your username">
-          </div>
-          <div class="mb-3">
-            <label for="new-password" class="form-label text-dark">Password</label>
-            <input type="password" class="form-control" id="new-password" placeholder="Enter your password">
-          </div>
-          <div class="mb-3">
-            <label for="confirm-password" class="form-label text-dark">Validate Password</label>
-            <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password">
-          </div>
-          <button type="submit" class="btn btn-primary w-100" id="create-account-btn">Create Account</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Create Account Modal -->
+{{> createAccountModal}}
+
+<!-- Include JavaScript files here -->
+<script src="/public/js/create-account.js"></script>
