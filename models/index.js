@@ -3,7 +3,7 @@ const Project = require('./project');
 const Task = require('./task');
 
 Project.belongsTo(User, {
-    // foreignKey: 'user_id',
+    foreignKey: 'user_id',
     onDelete: "CASCADE",
 });
 
