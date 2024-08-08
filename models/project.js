@@ -22,4 +22,6 @@ Project.init(
         sequelize,
     }
 );
+
 module.exports = Project;
+
