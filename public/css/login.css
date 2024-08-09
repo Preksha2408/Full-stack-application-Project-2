@@ -55,12 +55,12 @@
   text-decoration: underline;
 }
 
-#login-btn {
+#login-button {
   background-color: var(--LtGray);
   color: black;
   border: 3px outset var(--LtGray);
 }
 
-#login-btn:hover {
+#login-button:hover {
   border: 3px inset var(--LtGray);
 }
