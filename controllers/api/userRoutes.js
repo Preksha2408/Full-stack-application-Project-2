@@ -1,14 +1,47 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
+const bcrypt = require('bcrypt');
+
+// route for when the create account button is clicked //
+router.post('/create-account', async (req, res) => {
+    try {
+      const { email ,username, password } = req.body;
+  
+      // Checking if the username already exists
+      const existingUser = await User.findOne({ where: { username : username } });
+      if (existingUser) {
+        return res.json({ success: false, message: 'Username already taken.' });
+      }
+  
+      // Hash the password before saving
+      const hashedPassword = await bcrypt.hash(password, 10);
+      console.log(hashedPassword);
+  
+      // Create a new user
+      await User.create({
+        email,
+        username,
+        password: hashedPassword,
+      });
+  
+      // If the account is successfully created, send success response
+      res.json({ success: true });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: 'Failed to create account. Please try again.' });
+    }
+  });
+  
 
 //When login button clicked this is the route that runs to render the homepage //
 router.post('/login', async (req, res) => {
     try {
-      const { email, password } = req.body;
-  
+      const { username, password } = req.body;
+      console.log(username); 
+
       // Find the user by email
-      const userData = await User.findOne({ where: { email } });
+      const userData = await User.findOne({ where: { username} });
   
       if (!userData) {
         res.status(400).json({ message: 'No user found with that email address!' });
@@ -50,4 +83,4 @@ router.post('/login', async (req, res) => {
     }
   });
 
-module.exports = router;
+module.exports = router

@@ -41,6 +41,8 @@ app.use(express.json());
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 // Set up Handlebars
 const hbs = exphbs.create({
   // partialsDir: path.join(__dirname, 'views', 'partials'),

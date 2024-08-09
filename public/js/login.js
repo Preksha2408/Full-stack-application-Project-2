@@ -1,10 +1,11 @@
 document.querySelector("#login-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const loginObj = {
-    email: document.querySelector("#username").value,
-    password: document.querySelector("#password").value,
+    username: document.querySelector("#new-username").value,
+    password: document.querySelector("#new-password").value,
   };
-
+  
+  console.log("Here is the loginObj",loginObj);
   fetch("/api/users/login", {
     method: "POST",
     body: JSON.stringify(loginObj),
@@ -13,6 +14,8 @@ document.querySelector("#login-form").addEventListener("submit", (e) => {
     },
   }).then((res) => {
     console.log("Response for login-form",res);
+    console.log("Status:", res.status); // Log status code
+    console.log("Status Text:", res.statusText); // Log status text
     if (res.ok) {
       console.log("Login successful, redirecting to homepage");
       location.href = "/homepage";

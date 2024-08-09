@@ -25,10 +25,6 @@ User.init(
   },
   {
     sequelize,
-    timestams : false,
-    modelName: 'User',
-    tableName: 'User', 
-    freezeTableName: true,
   }
 );
 

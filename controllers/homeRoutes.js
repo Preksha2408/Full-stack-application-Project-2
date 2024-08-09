@@ -25,7 +25,7 @@ res.render('login');
 router.get('/', (req, res) => {
   if (req.session.logged_in) {
     // If user is logged in, redirect to the homepage
-    res.redirect('/homepacge');
+    res.redirect('/homepage');
   } else {
     // If user is not logged in, render the login page
     res.render('login');

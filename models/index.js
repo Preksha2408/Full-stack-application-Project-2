@@ -3,20 +3,17 @@ const Project = require('./project');
 const Task = require('./task');
 
 Project.belongsTo(User, {
-    foreignKey: 'user_id',
     onDelete: "CASCADE",
 });
 
-User.hasMany(Project, {
-    // foreignKey: 'user_id',
-});
+User.hasMany(Project);
 
-Task.belongsTo(Project, {
-    // foreignKey: 'project_id',
-});
+User.hasMany(Task);
 
-Project.hasMany(Task, {
-    // foreignKey: 'task_id',
-});
+Task.belongsTo(User);
+
+Task.belongsTo(Project);
+
+Project.hasMany(Task);
 
 module.exports = { User, Project, Task };
