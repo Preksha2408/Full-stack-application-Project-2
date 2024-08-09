@@ -14,6 +14,9 @@ Task.init(
     task_due: {
       type: DataTypes.DATE,
     },
+    task_description: {
+      type: DataTypes.STRING,
+    },
     project_id: {
       type: DataTypes.INTEGER,
       references: {
