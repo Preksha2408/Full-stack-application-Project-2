@@ -1,19 +1,19 @@
 const router = require('express').Router();
-const { User, Project, Task } = require('../../models');
-const withAuth = require('../../utils/auth');
+const { Task } = require('../../models');
 
-
-// Route to handle form submission
-
-// app.post('/task', (req, res) => {
-//     const { taskName, taskDueDate, taskDescription, projectName } = req.body;
-//     res.render('task', {
-//       taskName,
-//       taskDueDate,
-//       taskDescription,
-//       projectName
-//     });
-//   });
-
+router.post('/api/tasks', async (req, res) => {
+    try {
+      const { taskname, due_date } = req.body;
+  
+      // Save the task to the database
+      const newTask = await Task.create({ taskname, due_date });
+  
+      // Respond with the new task details
+      res.json({ success: true, task: newTask });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: 'Failed to create task' });
+    }
+  });
 
 module.exports = router;

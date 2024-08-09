@@ -10,12 +10,12 @@
       <div class="modal-body">
         <form id="new-project-form">
           <div class="mb-3">
-            <label for="project-name" class="form-label">Project Name</label>
-            <input type="text" class="form-control" id="project-name" placeholder="Enter project name">
+            <label for="project-name-input" class="form-label">Project Name</label>
+            <input type="text" class="form-control" id="project-name-input" name="projectname" placeholder="Enter project name" required>
           </div>
           <div class="mb-3">
-            <label for="due-date" class="form-label">Due Date</label>
-            <input type="date" class="form-control" id="due-date">
+            <label for="due-date-input" class="form-label">Due Date</label>
+            <input type="date" class="form-control" id="due-date-input" name="due_date" required>
           </div>
           <button type="submit" class="btn btn-primary w-100">Create Project</button>
         </form>
