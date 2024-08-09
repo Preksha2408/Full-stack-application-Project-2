@@ -11,17 +11,14 @@ Project.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        project_due: {
+        user_id: {
             type: DataTypes.DATEONLY,
-        }
-        // user_id: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,
-        //     references: {
-        //         model: 'user',
-        //         key: 'id',
-        //     },
-        // },
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,

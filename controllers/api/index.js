@@ -8,4 +8,3 @@ router.use('/projects', projectRoutes);
 router.use('/emails', emailRoutes)
 
 module.exports = router;
-

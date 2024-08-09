@@ -1,5 +1,7 @@
-<h1 class="page-title"><i class="fa fa-calendar"></i> OnIt</h1>
-<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="text-center my-4">
+  <h1 class="page-title">On-It</h1>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <i class="fa fa-bars"></i> Projects
@@ -7,7 +9,7 @@
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <span id="welcome" class="nav-link">Welcome, {{username}}</span>
+          <span class="nav-link">Welcome, {{username}}</span>
         </li>
         <li class="nav-item">
           <a id ="logout-btn" class="nav-link" href="/logout">Log Out</a>
@@ -18,21 +20,26 @@
 </nav>
 <div id="project-name" class="container my-4">
   <div class="d-flex justify-content-between align-items-center">
-    <h3 class="project-header">{{project_name}}</h3>
-    <button id ="new-project" class="btn btn-primary text-white">New Project</button>
-    <p class="mb-0 project-header">Due Date: {{due_date}}</p>
+    <h3 class="text-style">{{projectname}}</h3>
+    <button id="new-project" class="btn btn-primary text-white mx-auto">New Project</button>
+    <h3 class="mb-0 text-style">{{due_date}}</h3>
   </div>
 </div>
-<div id="newtask">
-    <button id ="new-task" class="btn btn-primary text-white">New Task</button>
+
+<div class="text-center my-4">
+  <button id="new-task" class="btn btn-primary text-white">New Task</button>
 </div>
 <div id="week">
-    <div class="d-flex justify-content-between">
-    <button id="week-btn" class="btn btn-light text-dark">&lt; Previous Week</button>
-    <button id="week-btn" class="btn btn-light text-dark">Next Week &gt;</button>
-    </div>
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-secondary ">
+      &lt; Previous Week
+    </button>
+    <button class="btn btn-secondary ms-3">
+      Next Week &gt;
+    </button>
+  </div>
 </div>
-<div id="calender-cards"></div>
+<div id="calender-cards" style="border: 2px solid black; margin-left: 40px ; margin-right: 40px; padding:10px ; background-color: #f9f9f9; height:400px; margin-top: 30px "></div>
 
 <!-- Create Project Modal -->
 {{> createProjectModal}}
