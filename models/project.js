@@ -12,7 +12,7 @@ Project.init(
             allowNull: false,
         },
         project_due: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATEONLY,
         }
         // user_id: {
         //     type: DataTypes.INTEGER,

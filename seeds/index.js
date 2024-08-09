@@ -18,12 +18,12 @@ const projectData = [
     {
         project_name: 'Project 1',
         project_due: 'Aug 30, 2024',
-        UserId: 1,
+        user_id: 1,
     },
     {
         project_name: 'Project 2',
         project_due: 'Dec 31, 2024',
-        UserId: 2,
+        user_id: 2,
     },
 ];
 
@@ -31,26 +31,26 @@ const taskData = [
     {
         task_name: "12345",
         task_due: '2024-08-07',
-        UserId: 1,
-        projectId: 1,
+        user_id: 1,
+        project_id: 1,
     },
     {
         task_name: "67890",
         task_due: '2024-08-09',
-        UserId: 1,
-        projectId: 1,
+        user_id: 1,
+        project_id: 1,
     },
     {
         task_name: "13579",
         task_due: '2024-08-07',
         user_id: 1,
-        projectId: 1,
+        project_id: 1,
     },
     {
         task_name: "24680",
         task_due: '2024-08-09',
-        UserId: 2,
-        projectId: 2,
+        user_id: 2,
+        project_id: 2,
     },
 ];
 

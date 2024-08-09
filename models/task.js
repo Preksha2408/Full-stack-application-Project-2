@@ -12,7 +12,7 @@ Task.init(
       allowNull: false,
     },
     task_due: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
     },
     task_description: {
       type: DataTypes.STRING,
@@ -29,7 +29,7 @@ Task.init(
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'User', // Match the table name used in the User model
+        model: 'user', // Match the table name used in the User model
         key: 'id',
       },
     },
@@ -41,7 +41,7 @@ Task.init(
   {
     sequelize,
     timestamps: false,
-    modelName: 'Task',
+    modelName: 'task',
     tableName: 'task',
     freezeTableName: true,
   }
