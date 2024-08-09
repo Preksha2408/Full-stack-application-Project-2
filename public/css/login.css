@@ -1,46 +1,66 @@
+:root {
+  --Blue: #3c486b;
+  --Red: #F45050;
+  --Yellow: #f9d949;
+  --Green: #21b799;
+  --LtBlue: #ddedf9;
+  --LtGray: #d3d3d3;
+}
+
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 /* Ensure the container takes full width and height */
 .container-fluid {
-    height: calc(100vh - 70px); /* Adjust the height based on your navbar height */
-  }
-  
-  .full-page-image {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .full-page-image img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: navy;
-    padding: 20px;
-    
-    width: 300px;
-  }
-  
-  .login-box .form-label {
-    color: white;
-  }
-  
-  .login-box a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .login-box a:hover {
-    text-decoration: underline;
-  }
+  height: calc(100vh - 70px);
+  /* Adjust the height based on your navbar height */
+}
 
+.full-page-image {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  
+.full-page-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.login-box {
+  position: fixed;
+  top: 350px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--Blue);
+  padding: 20px;
+  width: 300px;
+}
+
+.login-box .form-label {
+  color: white;
+}
+
+.login-box a {
+  color: white;
+  text-decoration: none;
+}
+
+.login-box a:hover {
+  text-decoration: underline;
+}
+
+#login-btn {
+  background-color: var(--LtGray);
+  color: black;
+  border: 3px outset var(--LtGray);
+}
+
+#login-btn:hover {
+  border: 3px inset var(--LtGray);
+}

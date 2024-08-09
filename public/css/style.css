@@ -1,0 +1,27 @@
+:root {
+    --Blue: #3c486b;
+    --Red: #F45050;
+    --Yellow: #f9d949;
+    --Green: #21b799;
+    --LtBlue: #ddedf9;
+    --LtGray: #d3d3d3;
+}
+
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.heading-title, 
+.page-title {
+    font-size: 60pt;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    color: var(--Blue);
+    padding-top: 10px;
+}
+
+.navbar {
+    height: 50px;
+    background-color: var(--Blue);
+}

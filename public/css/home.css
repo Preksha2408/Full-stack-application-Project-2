@@ -1,25 +1,92 @@
+:root {
+  --Blue: #3c486b;
+  --Red: #F45050;
+  --Yellow: #f9d949;
+  --Green: #21b799;
+  --LtBlue: #ddedf9;
+  --LtGray: #d3d3d3;
+}
+
+#welcome {
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  right: 50%;
+}
+
+#new-project {
+  background-color: var(--Blue);
+  position: absolute;
+  right: 44vw;
+  width: 140px;
+  height: 40px;
+  border: 3px outset var(--Blue);
+}
+
+#new-project:hover {
+  border: 3px inset var(--Blue);
+}
+
+#new-task {
+  background-color: var(--Blue);
+  position: absolute;
+  right: 44vw;
+  width: 140px;
+  height: 40px;
+  border: 3px outset var(--Blue);
+}
+
+#new-task:hover {
+  border: 3px inset var(--Blue);
+}
+
+.project-header {
+  font-size: 26pt;
+  color: var(--Blue);
+  font-weight: 700;
+}
+
+#week {
+  padding: 20px;
+}
+
+#week-btn {
+  background-color: var(--LtGray);
+  width: 150px;
+  border: 3px outset var(--LtGray);
+}
+
+#week-btn:hover {
+  border: 3px inset var(--LtGray);
+}
+
 .calendar-card {
-    width: 150px;
-    height: 200px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .card-header h5 {
-    font-size: 1rem;
-    margin: 0;
-    text-align: center;
-  }
-  
-  .card-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  width: 13vw;
+  min-height: 500px;
+  padding: 10px;
+  border: 1px solid var(--Blue);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.card-header h5 {
+  font-size: 1rem;
+  padding: 10px;
+  text-align: center;
+}
+
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-button {
+  width: 12vw;
+  border: 3px outset;
+}
+
+.task-btn:hover {
+  border: 3px inset;
+}

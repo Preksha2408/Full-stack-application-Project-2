@@ -15,7 +15,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Requiring our models for syncing
-const { User } = require("./models");
+const { User, Project, Task } = require("./models");
 
 
 // Session configuration
@@ -43,33 +43,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Set up Handlebars
 const hbs = exphbs.create({
-  partialsDir: path.join(__dirname, 'views', 'partials'),
+  // partialsDir: path.join(__dirname, 'views', 'partials'),
 });
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 // Use your routes
-app.use(allRoutes);
-
 app.use("/", allRoutes);
-
-
-// Route to render the form page
-app.get('/', (req, res) => {
-  res.render('newTaskModal');
-});
-
-// Route to handle form submission
-app.post('/task', (req, res) => {
-  const { taskName, taskDueDate, taskDescription, projectName } = req.body;
-  res.render('task', {
-    taskName,
-    taskDueDate,
-    taskDescription,
-    projectName
-  });
-});
-
 
 
 // Start the server
