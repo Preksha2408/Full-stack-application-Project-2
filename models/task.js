@@ -30,6 +30,9 @@ Task.init(
         key: 'id',
       },
     },
+    task_description: {
+      type: DataTypes.STRING,
+    },
     is_completed: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
