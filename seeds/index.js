@@ -1,6 +1,5 @@
 const sequelize = require("../config/connection");
 const { User, Project, Task } = require("../models");
-
 const userData = [
     {
         username: "Joey",
@@ -13,7 +12,6 @@ const userData = [
         password: "password",
     },
 ];
-
 const projectData = [
     {
         project_name: 'Project 1',
@@ -26,7 +24,6 @@ const projectData = [
         UserId: 2,
     },
 ];
-
 const taskData = [
     {
         task_name: "12345",
@@ -53,7 +50,6 @@ const taskData = [
         ProjectId: 2,
     },
 ];
-
 const seedMe = async () => {
     try {
         await sequelize.sync({ force: true });
