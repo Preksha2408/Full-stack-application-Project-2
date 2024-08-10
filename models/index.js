@@ -10,7 +10,6 @@ User.hasMany(Project);
 
 User.hasMany(Task);
 
-
 Task.belongsTo(User);
 
 Task.belongsTo(Project);

@@ -6,7 +6,6 @@ class Project extends Model {}
 
 Project.init(
     {
-        
         project_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -17,10 +16,6 @@ Project.init(
     },
     {
         sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'project',
     }
 );
 

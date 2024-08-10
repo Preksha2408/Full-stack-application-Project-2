@@ -33,13 +33,6 @@ User.init(
   },
   {
     sequelize,
-    hooks: {
-      async beforeSave(user){
-        if (!user.changed("password"))
-          return;
-      await user.hashPassword()   
-      }
-    }
   }
 );
 

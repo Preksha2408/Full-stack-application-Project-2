@@ -19,10 +19,6 @@ Task.init(
   },
   {
     sequelize,
-    timestamps: false,
-    modelName: 'Task',
-    tableName: 'task',
-    freezeTableName: true,
   }
 );
 
