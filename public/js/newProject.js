@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const due_date = document.getElementById("due-date-input").value;
 
       const projectData = {
-        projectname: projectname,
+        project_name: projectname,
         due_date: due_date
       };
 
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(data => {
         if (data.success) {
           // Redirect to homepage with the new project details
-          location.href = `/homepage?projectname=${encodeURIComponent(projectname)}&due_date=${encodeURIComponent(due_date)}`;
+          location.href = `/projects/${data.data.id}`
         } else {
           alert("Failed to create project. Please try again.");
         }
