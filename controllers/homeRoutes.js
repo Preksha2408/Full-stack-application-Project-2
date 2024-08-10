@@ -2,34 +2,36 @@ const router = require('express').Router();
 const { User, Project, Task } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/homepage', (req, res) => {
-  const { projectname, due_date } = req.query;
-  res.render('homepage', {
-    username: 'Guest', // Replace with dynamic data if needed
-    projectname: projectname || 'Your Project Name',
-    due_date: due_date || 'Due Date Here'
-  });
-});
 
-//Uncomment this after done working with homepage route 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/homepage');
-    return;
-  }
-res.render('login');
-});
 
 //Route for the root URL ('/') to display the login page
-router.get('/', (req, res) => {
-  if (req.session.logged_in) {
-    // If user is logged in, redirect to the homepage
-    res.redirect('/homepacge');
-  } else {
-    // If user is not logged in, render the login page
-    res.render('login');
-  }
+router.get('/', async (req, res) => {
+    if (req.session.logged_in) {
+        const user = await User.findByPk(req.session.user_id)
+        // If user is logged in, redirect to the homepage
+        res.render('homepage', {
+            username: user?.username || 'Guest', // Replace with dynamic data if needed
+            projectname: 'Your Project Name',
+            due_date: 'Due Date Here'
+        });
+    } else {
+        // If user is not logged in, render the login page
+        res.render('login');
+    }
+});
+
+
+router.get('/projects/:projectId', async (req, res) => {
+    if (!req.session.logged_in) {
+        res.redirect("/")
+        return
+    }
+    const [user, project] = await Promise.all([User.findByPk(req.session.user_id), Project.findByPk(req.params.projectId)])         
+    res.render('homepage', {
+        username: user?.username || 'Guest', // Replace with dynamic data if needed
+        projectname: project?.project_name || 'Your Project Name',
+        due_date: project?.project_due || 'Due Date Here'
+    });
 });
 
 module.exports = router;
