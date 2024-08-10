@@ -26,6 +26,4 @@
 //       // Append the card to the container
 //       calendarCardsContainer.appendChild(card);
 //     }
-
-
 // });
