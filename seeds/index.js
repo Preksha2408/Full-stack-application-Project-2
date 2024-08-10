@@ -1,6 +1,5 @@
 const sequelize = require("../config/connection");
 const { User, Project, Task } = require("../models");
-
 const userData = [
     {
         username: "Joey",
@@ -13,7 +12,6 @@ const userData = [
         password: "password",
     },
 ];
-
 const projectData = [
     {
         project_name: 'Project 1',
@@ -26,44 +24,42 @@ const projectData = [
         UserId: 2,
     },
 ];
-
 const taskData = [
     {
         task_name: "12345",
-        task_due: '2024-08-07',
+        task_due: '08-08-2024',
         UserId: 1,
-        projectId: 1,
+        ProjectId: 1,
     },
     {
         task_name: "67890",
-        task_due: '2024-08-09',
+        task_due: '08-10-2024',
         UserId: 1,
-        projectId: 1,
+        ProjectId: 1,
     },
     {
         task_name: "13579",
-        task_due: '2024-08-07',
-        user_id: 1,
-        projectId: 1,
+        task_due: '08-08-2024',
+        UserId: 1,
+        ProjectId: 1,
     },
     {
         task_name: "24680",
-        task_due: '2024-08-09',
+        task_due: '08-10-2024',
         UserId: 2,
-        projectId: 2,
+        ProjectId: 2,
     },
 ];
-
 const seedMe = async () => {
     try {
         await sequelize.sync({ force: true });
         await User.bulkCreate(userData, {
             individualHooks: true,
         });
-        await Task.bulkCreate(taskData);
-        console.log("yay");
         await Project.bulkCreate(projectData);
         console.log("finally");
+        await Task.bulkCreate(taskData);
+        console.log("yay");
         process.exit(0);
     } catch (err) {
         console.log(err);

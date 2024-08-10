@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createAccountForm.addEventListener("submit", (event) => {
     event.preventDefault();
     
+    const email = document.getElementById('new-email').value;
     const username = document.getElementById('new-username').value;
     const password = document.getElementById('new-password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
@@ -12,12 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
       }
      
-      fetch('/api/create-account', {
+      fetch('/api/users/create-account', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({ email, username, password }),
           })
           .then(response => response.json())
           .then(data => {

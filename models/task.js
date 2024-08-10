@@ -6,33 +6,15 @@ class Task extends Model {}
 
 Task.init(
   {
-    
     task_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     task_due: {
-      type: DataTypes.DATE,
-    },
-    project_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'project',
-        key: 'id',
-      },
-      onDelete: 'SET NULL',
-      onUpdate: 'CASCADE',
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'User', // Match the table name used in the User model
-        key: 'id',
-      },
+      type: DataTypes.DATEONLY,
     },
     is_completed: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
     },
   },
   {
