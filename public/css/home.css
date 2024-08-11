@@ -60,7 +60,7 @@
   border: 3px inset var(--LtGray);
 }
 
-.calendar-card {
+#calender-card {
   width: 13vw;
   min-height: 500px;
   padding: 10px;
