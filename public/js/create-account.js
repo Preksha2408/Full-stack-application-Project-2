@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .then(data => {
             if (data.success) {
               // If account creation is successful, redirect to the login page
-              window.location.href = "/login";
+              window.location.href = "/";
             } else {
               alert(data.message);
             }
@@ -32,6 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
           .catch(error => console.error('Error:', error));  
 
     
-    window.location.href = "/login";
+    // window.location.href = "/login";
   });
 });

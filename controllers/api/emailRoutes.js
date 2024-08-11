@@ -27,49 +27,50 @@ console.log(`The email function will run at ${job.cronTime}`);
 //     const tomorrow = today.add(1, 'day');
 //     console.log(tomorrow)
     
+
 // }
 
 // run();
 
-//REST API request to send emails
-router.post('/', async (req, res) => {
-    try {
-        const dueEmailData = {
-            service_id: 'service_ojacxn7',
-            template_id: 'template_fq9gwkf',
-            user_id: process.env.EMAIL_KEY, 
-            template_params: dueTemplParams
-        };
-        
-        axios({
-            method: 'post',
-            url: 'https://api.emailjs.com/api/v1.0/email/send',
-            data: dueEmailData
-          })
-          .then(function (response) {
-           res.json('success');
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        
-    } catch(err) {
-        console.log(err)
-    }
-
-    try {
-        // const dueArray = dueEmails();
-        const overdueArray = [{to_name: 'H', to_email:'jpmankovich@gmail.com'}, {to_name:'K', to_email:'jpmankovich@gmail.com'}]
-        overdueArray.forEach((email) => {
-            sendOverdueEmails(email)
-        })
+// //REST API request to send emails
+// router.post('/', async (req, res) => {
+//     try {
+//         const dueEmailData = {
+//             service_id: 'service_ojacxn7',
+//             template_id: 'template_fq9gwkf',
+//             user_id: process.env.EMAIL_KEY, 
+//             template_params: dueTemplParams
+//         };
         
 
-        
-    } catch(err) {
-        console.log(err)
-    }
-});
+        // axios({
+        //     method: 'post',
+        //     url: 'https://api.emailjs.com/api/v1.0/email/send',
+        //     data: dueEmailData
+        //   })
+        //   .then(function (response) {
+        //    res.json('success');
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   });
+    // } catch(err) {
+    //     console.log(err)
+    // }
+
+    // try {
+    //     // const dueArray = dueEmails();
+    //     const overdueArray = [{to_name: 'H', to_email:'jpmankovich@gmail.com'}, {to_name:'K', to_email:'jpmankovich@gmail.com'}]
+    //     overdueArray.forEach((email) => {
+    //         sendOverdueEmails(email)
+    //     })
+
+
+
+//     } catch(err) {
+//         console.log(err)
+//     }
+// });
 
 // const emails = async () => {
 //     try{
@@ -84,33 +85,32 @@ router.post('/', async (req, res) => {
 //     }}
 // }
 
-const sendOverdueEmails = async (overdueTemplParams) => {
-    const overdueEmailData = {
-        service_id: 'service_ojacxn7',
-        template_id: 'template_fywne69',
-        user_id: process.env.EMAIL_KEY, 
-        template_params: overdueTemplParams
-    };
-    
-    axios({
-        method: 'post',
-        url: 'https://api.emailjs.com/api/v1.0/email/send',
-        data: overdueEmailData
-      })
-      .then(function (response) {
-       res.json('success');
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-}
+// const sendOverdueEmails = async (overdueTemplParams) => {
+//     const overdueEmailData = {
+//         service_id: 'service_ojacxn7',
+//         template_id: 'template_fywne69',
+//         user_id: process.env.EMAIL_KEY, 
+//         template_params: overdueTemplParams
+//     };
+//     axios({
+//         method: 'post',
+//         url: 'https://api.emailjs.com/api/v1.0/email/send',
+//         data: overdueEmailData
+//       })
+//       .then(function (response) {
+//        res.json('success');
+//       })
+//       .catch(function (error) {
+//         console.log(error);
+//       });
+// }
 
-const dueTemplParams = {
-    to_name: 'J',
-    to_email: "jpmankovich@gmail.com",
-}
+// const dueTemplParams = {
+//     to_name: 'J',
+//     to_email: "jpmankovich@gmail.com",
+// }
 
-// const overdueTemplParams = {
+// // const overdueTemplParams = {
 //     to_name: "J",
 //     to_email: "jpmankovich@gmail.com",
 // }
@@ -127,7 +127,6 @@ const dueTemplParams = {
 //     try {
 //         const today = dayjs()
 //         const tomorrow = today.add(1, 'day');
-        
 //         const { dueTasks } = await Task.findAll({
 //             where: {
 //                 task_due: tomorrow,
@@ -135,14 +134,14 @@ const dueTemplParams = {
 //             include: [ {model: User} ]
 //         })
 //         console.log(dueTasks)
-        
+
 //         // const { emailsObj } = Object.groupBy(dueTasks, ({ email }) => email);
-        
+
 //         // console.log(emailsObj)
-        
-        
+
+
 //         return dueTasks;
-        
+
 //     } catch {(err) => {
 //         console.log(err);
 //         res.status(400).json(err)
@@ -237,5 +236,6 @@ const dueTemplParams = {
 
 // getEmails()
 
-module.exports = router;
+// module.exports = router;
 
+// module.exports = router;
