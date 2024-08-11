@@ -50,7 +50,7 @@ router.get('/projects/:projectId', async (req, res) => {
         username: user?.username || 'Guest', // Replace with dynamic data if needed
         currentDayOfWeek,
         project: {
-            projectname: project?.project_name || 'Your Project Name',
+            project_name: project?.project_name || 'Your Project Name',
             due_date: project?.project_due || 'Due Date Here',
             tasks: {
                 "Sun": project?.tasks.filter((task) => task.task_due.getDate() === 0) || [],

@@ -85,10 +85,10 @@ router.post('/', async (req, res) => {
 
   router.get('/', (req, res) => {
     Project.findAll({
-      // include: [
-      //   {model: Task},
-      //   {model: User}
-      // ]
+      include: [
+        {model: Task},
+        {model: User}
+      ]
     })
       .then((data) => {
         res.json(data);
