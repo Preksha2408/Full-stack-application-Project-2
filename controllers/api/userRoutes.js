@@ -15,14 +15,14 @@ router.post('/create-account', async (req, res) => {
       }
 
       // Hash the password before saving
-      const hashedPassword = await bcrypt.hash(password, 10);
-      console.log(hashedPassword);
+      // const hashedPassword = await bcrypt.hash(password, 10);
+      // console.log(hashedPassword);
 
       // Create a new user
       await User.create({
         email,
         username,
-        password: hashedPassword,
+        password
       });
 
       // If the account is successfully created, send success response
@@ -44,13 +44,15 @@ router.post('/login', async (req, res) => {
       const userData = await User.findOne({ where: { username} });
   
       if (!userData) {
-        res.status(400).json({ message: 'No user found with that email address!' });
+        res.status(400).json({ message: 'No user found with that username !' });
         return;
       }
   
       // Check if the password is correct
       const validPassword = await userData.checkPassword(password);
-  
+      console.log(validPassword);
+      console.log(password);
+      console.log(userData);
       if (!validPassword) {
         console.log('Incorrect Password');
         res.status(400).json({ message: 'Incorrect password!' });
@@ -82,5 +84,19 @@ router.post('/login', async (req, res) => {
       res.status(404).end();
     }
   });
+
+
+  router.get('/', (req, res) => {
+    User.findAll()
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json({ msg: "error", err});
+      });
+  });
+
+
 
 module.exports = router;
