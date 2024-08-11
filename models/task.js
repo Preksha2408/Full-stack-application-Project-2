@@ -13,6 +13,9 @@ Task.init(
     task_due: {
       type: DataTypes.DATEONLY,
     },
+    task_desc: {
+      type: DataTypes.STRING,
+    },
     is_completed: {
       type: DataTypes.BOOLEAN,
     },

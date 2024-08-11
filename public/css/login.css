@@ -18,8 +18,8 @@
 }
 
 .full-page-image {
-  height: 100%;
-  width: 100%;
+  background-image: url("../images/background.png");
+  background-size: cover;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -33,7 +33,7 @@
 }
 
 .login-box {
-  position: fixed;
+  position: absolute;
   top: 350px;
   left: 50%;
   transform: translate(-50%, -50%);

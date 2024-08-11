@@ -20,12 +20,17 @@
 </nav>
 <div id="project-name" class="container my-4">
   <div class="d-flex justify-content-between align-items-center">
-    <h3 class="text-style">{{projectname}}</h3>
+    {{#if project}}
+    <h3 class="text-style">{{project.projectname}}</h3>
+    {{/if}}
     <button id="new-project" class="btn btn-primary text-white mx-auto">New Project</button>
-    <h3 class="mb-0 text-style">{{due_date}}</h3>
+    {{#if project}}
+    <h3 class="mb-0 text-style">{{project.due_date}}</h3>
+    {{/if}}
   </div>
 </div>
 
+{{#if project}}
 <div class="text-center my-4">
   <button id="new-task" class="btn btn-primary text-white">New Task</button>
 </div>
@@ -39,14 +44,26 @@
     </button>
   </div>
 </div>
-<div id="calender-cards" style="border: 2px solid black; margin-left: 40px ; margin-right: 40px; padding:10px ; background-color: #f9f9f9; height:400px; margin-top: 30px "></div>
+<div id="calender">
+  {{#each project.tasks as | tasks |}}
+  <div id="calendar-card">
+    <h3>{{@key}}</h3>
+    {{#each tasks as | task |}}
+    {{task.task_name}}
+    {{/each}}
+  </div>
+  {{/each}}
+</div>
+<!-- New Task Modal -->
+{{> newTaskModal}}
+  <script src="/js/newTask.js"></script>
+{{/if}}
 
 <!-- Create Project Modal -->
 {{> createProjectModal}}
 
-<!-- New Task Modal -->
-{{> newTaskModal}}
+
 
 <!-- Include JavaScript files here -->
-  <script src="/js/newTask.js"></script>
+
   <script src="/js/newProject.js"></script>
