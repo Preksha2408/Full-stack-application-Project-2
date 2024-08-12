@@ -3,10 +3,10 @@ const router = require('express').Router();
 const axios = require('axios')
 const { Task, User } = require('../../models');
 const dayjs = require('dayjs')
-const cron = require('node-cron')
+// const cron = require('node-cron')
 
 //REST API request to send emails with emailjs
-const run = () => {
+// const run = () => {
     
     router.post('/', async (req, res) => {
         console.log(`\n\n\n+++++++++++++++++++++++++++++\n\n\n cron worked and run() initiated\n\n\n++++++++++++++++++++++++++++++++++++\n\n\n`);
@@ -44,7 +44,7 @@ const run = () => {
             console.log(err)
         }
     });
-};
+// };
 
 //sending emails to users with tasks due the next day
 const sendDueEmails = (dueTemplParams) => {
