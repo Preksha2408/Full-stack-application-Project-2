@@ -37,22 +37,22 @@ router.post('/', async (req, res) => {
 });
 
 
-// //get all tasks
-// router.get('/', (req, res) => {
-//   Task.findAll({
-//     include: [ 
-//       {model: Project}, 
-//       {model: User} 
-//     ]
-//   })
-//     .then((data) => {
-//       res.json(data);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json({ msg: "error", err});
-//     });
-// });
+//get all tasks
+router.get('/', (req, res) => {
+  Task.findAll({
+    include: [ 
+      {model: Project}, 
+      {model: User} 
+    ]
+  })
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: "error", err});
+    });
+});
 
 // //get task by id
 // router.get('/:id', (req, res) => {
@@ -86,21 +86,7 @@ router.post('/', async (req, res) => {
 //     });
 // });
 
-//   router.get('/', (req, res) => {
-//     Task.findAll({
-//       include: [
-//         {model: Project},
-//         {model: User}
-//       ]
-//     })
-//       .then((data) => {
-//         res.json(data);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         res.status(500).json({ msg: "error", err});
-//       });
-//   });
+
 // //get task by id
 // router.get('/:id', (req, res) => {
 //   Task.findByPk(req.params.id, {

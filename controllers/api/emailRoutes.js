@@ -9,7 +9,7 @@ const dayjs = require('dayjs')
 // const run = () => {
     
     router.post('/', async (req, res) => {
-        console.log(`\n\n\n+++++++++++++++++++++++++++++\n\n\n cron worked and run() initiated\n\n\n++++++++++++++++++++++++++++++++++++\n\n\n`);
+        // console.log(`\n\n\n+++++++++++++++++++++++++++++\n\n\n cron worked and run() initiated\n\n\n++++++++++++++++++++++++++++++++++++\n\n\n`);
         try {
             const dueUsers = await getDueUsers();
             //if...else to set template params if only a single object is returned from getDueUsers() versus if an array of objects is returned
@@ -186,3 +186,4 @@ async function getOverdueUsers() {
 // task.start();
 
 module.exports = router;
+
