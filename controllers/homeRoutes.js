@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
         res.render('homepage', {
             username: user?.username || 'Guest', // Replace with dynamic data if needed
             project: null,
+            loggedIn: req.session.logged_in,
         });
     } else {
         // If user is not logged in, render the login page

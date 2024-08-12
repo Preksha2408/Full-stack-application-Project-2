@@ -3,18 +3,18 @@
     <!--  task creation form  goes here -->
     <form id="task-form">
       <div class="mb-3">
-        <label for="task-name" class="form-label">Task Name</label>
+        <label for="task-name" class="form-label">Task name : {{task.taskname}}</label>
         <input type="text" class="form-control" id="task-name" required>
       </div>
       <div class="mb-3">
-        <label for="task-due-date" class="form-label">Due Date</label>
+        <label for="task-due-date" class="form-label">Due Date : {{task.due_date}}</label>
         <input type="date" class="form-control" id="task-due-date" required>
       </div>
       <div class="mb-3">
-        <label for="task-description" class="form-label">Task Description</label>
+        <label for="task-description" class="form-label">Task Description : {{task.taskdesc}}</label>
         <textarea class="form-control" id="task-description" rows="3" required></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Save Task</button>
+      <button type="submit" class="btn btn-primary">Update Task</button>
     </form>
   </div>
 
