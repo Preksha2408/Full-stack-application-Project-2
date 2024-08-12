@@ -25,3 +25,4 @@ document.querySelector("#login-form").addEventListener("submit", (e) => {
     console.error("Error during login:", error);
   })
 });
+console.log("login.js");
