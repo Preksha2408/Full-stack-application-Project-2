@@ -37,87 +37,30 @@ router.get('/', async (req, res) => {
 //     }
 // });
 
-
 router.get('/projects/:id', async (req, res) => {
     if (!req.session.logged_in) {
         res.redirect("/")
         return
     }
-    // const currentDay = /*new Date()*/ dayjs().format('MM-DD-YYYY');
-    // // console.log(currentDay)
-    // const currentDayOfWeek = dayjs().day();
-    // // console.log(`\n\n${currentDayOfWeek}`)
-    // const startOfWeek = () => {
-    //     if (currentDayOfWeek === 0) {
-    //         const startOfWeek = currentDay;
-    //         // console.log(`\n\n${startOfWeek}`)
-    //         return startOfWeek
-    //     }
-    //     const startOfWeek = dayjs().subtract((currentDayOfWeek-1), 'day').format('MM-DD-YYYY')
-    //     // console.log(`\n\n${startOfWeek}`)
-    //     return startOfWeek
-    // }
-    // const startOfWeekDate = startOfWeek()
-    // // console.log(`\n${startOfWeekDate} this is a Sunday`)
-    // const endOfWeekDate = dayjs(startOfWeekDate).add(6, 'day').format('MM-DD-YYYY')
 
+    const currentDay = /*new Date()*/ dayjs().format('MM-DD-YYYY');
+    // console.log(currentDay)
+    const currentDayOfWeek = dayjs().day();
+    // console.log(`\n\n${currentDayOfWeek}`)
+    const startOfWeek = () => {
+        if (currentDayOfWeek === 0) {
+            const startOfWeek = currentDay;
+            // console.log(`\n\n${startOfWeek}`)
+            return startOfWeek
+        } 
+        const startOfWeek = dayjs().subtract((currentDayOfWeek-1), 'day').format('MM-DD-YYYY')
+        // console.log(`\n\n${startOfWeek}`)
+        return startOfWeek
+    }
+    const startOfWeekDate = startOfWeek()
+    // console.log(`\n${startOfWeekDate} this is a Sunday`)
+    const endOfWeekDate = dayjs(startOfWeekDate).add(6, 'day').format('MM-DD-YYYY')
     // console.log(`\n${endOfWeek}`)
-
-    // console.log("Incoming Query: ", req.query);
-    // const weekOffset = Number(req.query.weekOffset) || 0;
-    // const currentDay = new Date();
-    // const currentDayOfWeek = currentDay.getDate();
-
-    // console.log("Week: ", weekOffset);
-    // console.log("Day: ", currentDay);
-    // console.log("DayOf: ", currentDayOfWeek);
-    
-    // const startOfWeek = new Date(currentDay.setDate(currentDay.getDate()-currentDayOfWeek+7*weekOffset))
-    // const endOfWeek = new Date(currentDay.setDate(currentDay.getDate()+6));
-
-    // console.log("Today: ", currentDayOfWeek);
-    // console.log("Start: ", startOfWeek);
-    // console.log("End: ", endOfWeek);
-
-    // console.log("Session OBj: ", req.session)
-    // console.log("Params OBj: ", req.params)
- //   console.log("Current User: ", res.session.username)
- //   const [user, project] = await Promise.all([
-    // const projectOriginal = await Promise.all([
-    //     User.findByPk(req.session.user_id),
-    //     Project.findByPk(req.params.id, {
-    //         include: {
-    //             model: Task,
-    //             where: {
-    //                 task_due: { [Op.between]: [ startOfWeek, endOfWeek ] }
-    //             }
-    //         },
-    //         raw: true,
-    //     })
-    // ]);
-
-    // const project = await Promise.all([
-    //    /* Project.findByPk(req.params.projectId, {
-    //         include: {
-    //             model: Task,
-    //             where: {
-    //                 task_due: { [Op.between]: [ startOfWeek, endOfWeek ] }
-    //             }
-    //         },
-    //         raw: true,
-    //     }) */
-    //     Project.findByPk(req.params.projectId)
-    // ])
-    // Our Request to the DB for the Current User --> The Associated Project --> The Associated User/Project Tasks
-    // const user = await Promise.all([
-    //     User.findByPk(req.session.user_id, {
-    //         include: {
-    //             model: Project,
-    //         },
-    //         raw: true,
-    //     }),
-    //     Project.findByPk(req.params.id)
-    // ]);
 
     const [user, project] = await Promise.all([
         User.findByPk(req.session.user_id),
@@ -131,33 +74,39 @@ router.get('/projects/:id', async (req, res) => {
             raw: true,
         })
     ])
-
-    console.log("User data: ", user)
-  //  console.log("Project data: ", project)
-  //  console.log("Project Test: ", project)
-    console.log("Project Test: ", project)
-
+    // const dueTasks = project.map((obj) => ({...obj.Task.dataValues}))
+    
     res.render('homepage', {
-        username: req.session.username || 'Guest',
-        userId: req.session.user_id,                 // Replace with dynamic data if needed
+        username: req.session.username || 'Guest', // Replace with dynamic data if needed
+        userId: req.session.user_id,
         currentDayOfWeek,
         project: {
             projectname: project?.project_name || 'Your Project Name',
             due_date: project?.project_due || 'Due Date Here',
             tasks: {
-                // "Sun": project?.tasks?.filter((task) => task.task_due.getDay() === 0) || [],
-                // "Mon": project?.tasks?.filter((task) => task.task_due.getDay() === 1) || [],
-                // "Tue": project?.tasks?.filter((task) => task.task_due.getDay() === 2) || [],
-                // "Wed": project?.tasks?.filter((task) => task.task_due.getDay() === 3) || [],
-                // "Thu": project?.tasks?.filter((task) => task.task_due.getDay() === 4) || [],
-                // "Fri": project?.tasks?.filter((task) => task.task_due.getDay() === 5) || [],
-                // "Sat": project?.tasks?.filter((task) => task.task_due.getDay() === 6) || [],
+                // "Sun": project?.tasks.filter((task) => dayjs(task.task_due).day() === 0) || [],
+                // "Mon": project?.tasks.filter((task) => dayjs(task.task_due).day() === 1) || [],
+                // "Tue": project?.tasks.filter((task) => dayjs(task.task_due).day() === 2) || [],
+                // "Wed": project?.tasks.filter((task) => dayjs(task.task_due).day() === 3) || [],
+                // "Thu": project?.tasks.filter((task) => dayjs(task.task_due).day() === 4) || [],
+                // "Fri": project?.tasks.filter((task) => dayjs(task.task_due).day() === 5) || [],
+                // "Sat": project?.tasks.filter((task) => dayjs(task.task_due).day() === 6) || [],
             },
-
-            loggedIn:req.session.logged_in
-        }
+            loggedIn: req.session.logged_in,
+        },
 
     });
 });
+
+router.get("/", (req, res) => {
+    Project.findAll()
+    .then((projData) => {
+        const hbsProj = projData.map((proj) => proj.toJSON());
+        res.render('homepage', {
+            projects: hbsProj,
+            // loggedIn: req.session.loggedIn,
+        })
+    })
+}); 
 
 module.exports = router;

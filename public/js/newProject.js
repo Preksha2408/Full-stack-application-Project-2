@@ -20,15 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const dueDate = document.getElementById("due-date-input").value;
       const due_date = dayjs(dueDate).format('MM-DD-YYYY');
       const userId = document.getElementById("hidden-userId").getAttribute("data-userId")
-
-      // const projectname = document.getElementById("project-name-input").value;
-      // const due_date = document.getElementById("due-date-input").value;
-      // const userId = document.getElementById("hidden-userId").getAttribute("data-userId");
+      console.log(`++++++++++++++++\n\n\n${userId}\n\n\n+++++++++++++++++++++++`)
 
       const projectData = {
         project_name: projectname,
         due_date: due_date,
-        userId: userId,
+        userId: userId
       };
 
       // Send the data to the server
@@ -52,3 +49,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
