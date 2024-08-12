@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const newProjectButton = document.getElementById("new-project");
 
@@ -14,12 +15,20 @@ document.addEventListener("DOMContentLoaded", () => {
     newProjectForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
+
       const projectname = document.getElementById("project-name-input").value;
-      const due_date = document.getElementById("due-date-input").value;
+      const dueDate = document.getElementById("due-date-input").value;
+      const due_date = dayjs(dueDate).format('MM-DD-YYYY');
+      const userId = document.getElementById("hidden-userId").getAttribute("data-userId")
+
+      // const projectname = document.getElementById("project-name-input").value;
+      // const due_date = document.getElementById("due-date-input").value;
+      // const userId = document.getElementById("hidden-userId").getAttribute("data-userId");
 
       const projectData = {
         project_name: projectname,
-        due_date: due_date
+        due_date: due_date,
+        userId: userId,
       };
 
       // Send the data to the server
