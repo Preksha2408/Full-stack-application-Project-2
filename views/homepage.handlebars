@@ -3,9 +3,21 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <i class="fa fa-bars"></i>Projects
-    </a>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</button>
+   
+    
+    
+      <ul="dropdown-menu">
+        {{#each projects}}
+        <li>
+          <a class="dropdown-item" href="/projects/{{this.id}}">{{this.project_name}}</a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -54,16 +66,18 @@
   </div>
   {{/each}}
 </div>
+
 <!-- New Task Modal -->
 {{> newTaskModal}}
   <script src="/js/newTask.js"></script>
 {{/if}}
 
 <!-- Create Project Modal -->
-{{> createProjectModal}}
+{{> createProjectModal userId=userId}}
 
 
-
+<script src="/js/logout.js"></script>
 <!-- Include JavaScript files here -->
 
   <script src="/js/newProject.js"></script>
+  {{!-- <script src="/js/calendar.js"></script> --}}
