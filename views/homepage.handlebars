@@ -4,12 +4,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</button>
-   
-    
-    
-      <ul="dropdown-menu">
-        {{#each projects}}
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Projects
+      </button>    
+      <ul class="dropdown-menu">
+        {{#each project}}
         <li>
           <a class="dropdown-item" href="/projects/{{this.id}}">{{this.project_name}}</a>
         </li>
@@ -56,7 +55,16 @@
     </button>
   </div>
 </div>
-
+{{!-- <div id="calender">
+  {{#each project.tasks as | tasks |}}
+  <div id="calendar-card">
+    <h3>{{@key}}</h3>
+    {{#each tasks as | task |}}
+    {{task.task_name}}
+    {{/each}}
+  </div>
+  {{/each}}
+</div> --}}
 
 <div class="container">
   <div class="card-scroll-container d-flex flex-nowrap overflow-auto">
