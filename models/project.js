@@ -6,6 +6,14 @@ class Project extends Model {}
 
 Project.init(
     {
+
+        user_id: {
+            type : DataTypes.INTEGER,
+            references: {
+                model : "user",
+                key: "id"
+              }
+        },
         project_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -16,6 +24,8 @@ Project.init(
     },
     {
         sequelize,
+        modelName : "project",
+        freezeTableName: true
     }
 );
 

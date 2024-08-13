@@ -6,6 +6,22 @@ class Task extends Model {}
 
 Task.init(
   {
+    project_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model : "project",
+        key : "id"
+      }
+    },
+
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model : "user",
+        key: "id"
+      }
+    },
+
     task_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,6 +37,8 @@ Task.init(
     },
   },
   {
+    modelName : "task",
+    freezeTableName: true,
     sequelize,
   }
 );

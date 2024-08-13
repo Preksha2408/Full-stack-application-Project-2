@@ -73,7 +73,7 @@ router.post('/', async (req, res) => {
       const { project_name, due_date, userId } = req.body;
       console.log(`++++++++++++++++\n\n\n${userId}\n\n\n+++++++++++++++++++++++`)
       //  save the project to the database here, 
-      const newProject = await Project.create({ project_name: project_name, project_due: due_date, UserId: userId });
+      const newProject = await Project.create({ project_name: project_name, project_due: due_date, user_id: userId });
   
       // Send a response back to the client
       res.json({ success: true, data: newProject });

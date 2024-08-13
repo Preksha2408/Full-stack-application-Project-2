@@ -16,12 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
       // Process form submission
       // Example: gather form data and send it to the server
 
-      const formData = new FormData(newTaskForm);
-      const data = Object.fromEntries(formData.entries());
+      const formData = new FormData(newTaskForm); // TO the project id from url ://grab the url 
+      const data = Object.fromEntries(formData.entries());    //To do :The Object here should contain proejct id 
       console.log("Data is being sent to the server:", data);
+      let path = window.location.pathname.split("/");
+      
+
       fetch("/api/tasks", {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          taskname: data.taskname,
+          due_date: data.due_date,
+          taskdesc: data.taskdesc,
+          projectId: path[path.length -1]
+        }),
         headers: {
           "Content-Type": "application/json"
         }
