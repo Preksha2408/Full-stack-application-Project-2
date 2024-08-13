@@ -1,0 +1,63 @@
+<!-- Task Modal -->
+<div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="taskModalLabel">Update Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Task creation form -->
+        <form id="task-form">
+          <div class="mb-3">
+            <label for="task-name" class="form-label">Task Name: {{task.taskname}}</label>
+            <input type="text" class="form-control" id="task-name" required>
+          </div>
+          <div class="mb-3">
+            <label for="task-due-date" class="form-label">Due Date: {{task.due_date}}</label>
+            <input type="date" class="form-control" id="task-due-date" required>
+          </div>
+          <div class="mb-3">
+            <label for="task-description" class="form-label">Task Description: {{task.taskdesc}}</label>
+            <textarea class="form-control" id="task-description" rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Update Task</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/task.js"></script>
+
+  
+  
+  
+  
+  
+  
+  
+  {{!-- <div class="container mt-4">
+    <h1 class="text-center">On It</h1>
+    <!--  task creation form  goes here -->
+    <form id="task-form">
+      <div class="mb-3">
+        <label for="task-name" class="form-label">Task name : {{task.taskname}}</label>
+        <input type="text" class="form-control" id="task-name" required>
+      </div>
+      <div class="mb-3">
+        <label for="task-due-date" class="form-label">Due Date : {{task.due_date}}</label>
+        <input type="date" class="form-control" id="task-due-date" required>
+      </div>
+      <div class="mb-3">
+        <label for="task-description" class="form-label">Task Description : {{task.taskdesc}}</label>
+        <textarea class="form-control" id="task-description" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Update Task</button>
+    </form>
+  </div>
+
+<script src="/js/task.js"></script> --}}

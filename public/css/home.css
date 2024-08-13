@@ -54,6 +54,7 @@
   background-color: var(--LtGray);
   width: 150px;
   border: 3px outset var(--LtGray);
+  visibility: hidden;
 }
 
 #week-btn:hover {
@@ -80,6 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color : white;
 }
 
 .task-button {

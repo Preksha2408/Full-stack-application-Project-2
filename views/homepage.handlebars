@@ -46,14 +46,14 @@
   <button id="new-task" class="btn btn-primary text-white">New Task</button>
 </div>
 <div id="week">
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between" style = " margin-bottom = 10px">
     <button id="week-btn" class="btn btn-secondary ">
       &lt; Previous Week
     </button>
     <button id="week-btn" class="btn btn-secondary ms-3">
       Next Week &gt;
     </button>
-  </div>
+  </div> 
 </div>
 {{!-- <div id="calender">
   {{#each project.tasks as | tasks |}}
@@ -79,8 +79,8 @@
               {{#each tasks as |task|}}
                 <li class="list-group-item" style="background-color: #3c486b">
                   <a href="/task/{{task.id}}">{{task.task_name}}</a>
-                  <p>{{task.task_desc}}</p>
-                  <small>Due: {{task.task_due}}</small>
+                  <p style = " color : white">{{task.task_desc}}</p>
+                  <small style = " color : white ">Due: {{task.task_due}}</small>
                 </li>
               {{/each}}
             </ul>
@@ -102,6 +102,7 @@
 
 <!-- Create Project Modal -->
 {{> createProjectModal userId=userId}}
+
 
 
 <script src="/js/logout.js"></script>
