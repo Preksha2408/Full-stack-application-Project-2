@@ -85,7 +85,6 @@ router.post('/logout', (req, res) => {
 
 
 
-
   router.get('/', (req, res) => {
     User.findAll()
       .then((data) => {

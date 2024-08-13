@@ -14,40 +14,46 @@ const userData = [
 ];
 const projectData = [
     {
+
         project_name: 'Guest bathroom',
         project_due: '09-30-2024',
         UserId: 1,
+
     },
     {
         project_name: 'New shed',
         project_due: '12-31-2024',
-        UserId: 2,
+        user_id: 2,
     },
 ];
 const taskData = [
     {
+
         task_name: "Remove sink and toilet",
         task_due: '08-13-2024',
         UserId: 1,
         ProjectId: 1,
+
     },
     {
         task_name: "Rip up tile",
         task_due: '08-13-2024',
-        UserId: 1,
-        ProjectId: 1,
+        user_id: 1,
+        project_id: 1,
     },
     {
+
         task_name: "Lay new tile",
         task_due: '08-15-2024',
         UserId: 1,
         ProjectId: 1,
+
     },
     {
         task_name: "Meet with carpenter",
         task_due: '08-13-2024',
-        UserId: 2,
-        ProjectId: 2,
+        user_id: 2,
+        project_id: 2,
     },
     {
         task_name: "Buy lumber",
