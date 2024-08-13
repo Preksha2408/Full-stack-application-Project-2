@@ -1,27 +1,28 @@
 const router = require('express').Router();
-// const { CronJob } = require('cron');
 const axios = require('axios')
 const { Task, User } = require('../../models');
 const dayjs = require('dayjs')
-// const cron = require('node-cron')
+const cron = require('node-cron')
 
-//REST API request to send emails with emailjs
-// const run = () => {
-    
-    router.post('/', async (req, res) => {
-        // console.log(`\n\n\n+++++++++++++++++++++++++++++\n\n\n cron worked and run() initiated\n\n\n++++++++++++++++++++++++++++++++++++\n\n\n`);
+
+async function run () {
+    console.log('+++++++++++++++++++++++\n\n\n ran function \n\n\n++++++++++++++++++++++++')
+   
+        console.log(`\n\n\n+++++++++++++++++++++++++++++\n\n\n router.post initiated\n\n\n++++++++++++++++++++++++++++++++++++\n\n\n`);
         try {
             const dueUsers = await getDueUsers();
             //if...else to set template params if only a single object is returned from getDueUsers() versus if an array of objects is returned
-            if (dueUsers.length < 2) {
+            if (dueUsers.length === 0) {
+                console.log ('no due emails')
+            } else if (dueUsers.length < 2) {
                 const dueTemplParams = { to_name: dueUsers.username, to_email: dueUsers.email };
                 sendDueEmails(dueTemplParams)
+            } else {
+                dueUsers.forEach((item) => {
+                    const dueTemplParams = { to_name: item.username, to_email: item.email };
+                    sendDueEmails(dueTemplParams)
+                })
             }
-            dueUsers.forEach((item) => {
-                const dueTemplParams = { to_name: item.username, to_email: item.email };
-                sendDueEmails(dueTemplParams)
-            })
-            
             
         } catch(err) {
             console.log(err)
@@ -29,24 +30,26 @@ const dayjs = require('dayjs')
     
         try {
             const overdueUsers = await getOverdueUsers();
-            if (overdueUsers.length < 2) {
+            if (overdueUsers.length === 0) {
+                console.log('no overdue emails')
+            } else if (overdueUsers.length < 2) {
                 const overdueTemplParams = { to_name: overdueUsers.username, to_email: overdueUsers.email };
                 sendOverdueEmails(overdueTemplParams)
-            }
+            } else {
                 // const overdueArray = [{to_name: 'H', to_email:'jpmankovich@gmail.com'}, {to_name:'K', to_email:'jpmankovich@gmail.com'}]
-            overdueUsers.forEach((item) => {
-                const overdueTemplParams = {to_name: item.username, to_email: item.email};
-                sendOverdueEmails(overdueTemplParams)
-            })
+                overdueUsers.forEach((item) => {
+                    const overdueTemplParams = {to_name: item.username, to_email: item.email};
+                    sendOverdueEmails(overdueTemplParams)
+                })
+            }
             
-          
         } catch(err) {
             console.log(err)
         }
-    });
-// };
+    
+};
 
-//sending emails to users with tasks due the next day
+//sending emails with emailjs
 const sendDueEmails = (dueTemplParams) => {
     console.log('+++++++++++++++++++++\n\nsend due emails is running\n\n++++++++++++++++++++++')
     
@@ -63,7 +66,7 @@ const sendDueEmails = (dueTemplParams) => {
         data: dueEmailData
     })
       .then(function (res) {
-       res.json('success')})
+       console.log('success')})
       .catch(function (error) {
         console.log(error)
     });
@@ -85,7 +88,7 @@ const sendOverdueEmails = (overdueTemplParams) => {
         data: overdueEmailData
     })
       .then(function (res) {
-       res.json('success')})
+       console.log('success')})
       .catch(function (error) {
         console.log(error)
     });
@@ -132,7 +135,7 @@ async function getDueUsers() {
         
     } catch {(err) => {
         console.log(err);
-        res.status(400).json(err)
+        
     }}
 };
 
@@ -154,36 +157,20 @@ async function getOverdueUsers() {
         
     } catch {(err) => {
         console.log(err);
-        res.status(400).json(err)
     }} 
 }
 
-//calling the function to kick off the email sending
-//TODO: code some sort of event listener that will fire this function (needed for presentation maybe even if cron gets working)
-//TODO: IDEALLY: get cron functional to run this at a set time every day
-// run();
+//schedule emails to run 
+const task = cron.schedule(
+    '0 0 10 * * *', 
+    run,
+    // () => {console.log(`\n\n\n+++++++++++++\n\n\n test: cron worked\n\n\n++++++++++++++++++++++++++\n\n\n`)}, 
+    {
+        scheduled: true,
+        timeZone: 'America/Los_Angeles'
+    }
+);
 
-// const job = CronJob.from({
-//     // '0 1 0 * * *', /* midnight +1 min cronTime */ 
-//     cronTime: '0 40 0 * * *',
-//     onTick: run(), /*onTick*/
-//     start: true,
-//     timeZone: 'UTC-10' /* time zone...set to hawaiian to cross midnight into a new day for all living within the US */
-// });
-
-// job.start();
-
-// const task = cron.schedule(
-//     '0 2 7 * * *', 
-//     () => {run()},
-//     // () => {console.log(`\n\n\n+++++++++++++\n\n\n test: cron worked\n\n\n++++++++++++++++++++++++++\n\n\n`)}, 
-//     // {
-//     //     scheduled: true,
-//     //     timeZone: 'America/Los_Angeles'
-//     // }
-// );
-
-// task.start();
 
 module.exports = router;
 
