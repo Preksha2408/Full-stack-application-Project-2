@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (newTaskForm) {
     newTaskForm.addEventListener("submit", (event) => {
-      event.preventDefault();
+      // event.preventDefault();
       // Process form submission
       // Example: gather form data and send it to the server
 
