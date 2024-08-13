@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const newProjectButton = document.getElementById("new-project");
 
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (newProjectForm) {
     newProjectForm.addEventListener("submit", (e) => {
       e.preventDefault();
+
 
       const projectname = document.getElementById("project-name-input").value;
       const dueDate = document.getElementById("due-date-input").value;
