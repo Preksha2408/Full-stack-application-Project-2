@@ -31,6 +31,7 @@ const taskData = [
 
         task_name: "Remove sink and toilet",
         task_due: '08-13-2024',
+        task_desc: "demo",
         UserId: 1,
         ProjectId: 1,
 
@@ -45,6 +46,7 @@ const taskData = [
 
         task_name: "Lay new tile",
         task_due: '08-15-2024',
+        task_desc: "demo",
         UserId: 1,
         ProjectId: 1,
 
@@ -52,12 +54,14 @@ const taskData = [
     {
         task_name: "Meet with carpenter",
         task_due: '08-13-2024',
+        task_desc: "demo",
         user_id: 2,
         project_id: 2,
     },
     {
         task_name: "Buy lumber",
         task_due: '08-15-2024',
+        task_desc: "demo",
         UserId: 2,
         ProjectId: 2,
     },
