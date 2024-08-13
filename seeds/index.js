@@ -3,49 +3,55 @@ const { User, Project, Task } = require("../models");
 const userData = [
     {
         username: "Joey",
-        email: "jpmankovich@gmail.com",
+        email: "o7018042@gmail.com",
         password: "password",
     },
     {
         username: "Elizabeth",
-        email: "egodschalk@gmail.com",
+        email: "o7018042@gmail.com",
         password: "password",
     },
 ];
 const projectData = [
     {
-        project_name: 'Project 1',
-        project_due: '08-30-2024',
+        project_name: 'Guest bathroom',
+        project_due: '09-30-2024',
         UserId: 1,
     },
     {
-        project_name: 'Project 2',
+        project_name: 'New shed',
         project_due: '12-31-2024',
         UserId: 2,
     },
 ];
 const taskData = [
     {
-        task_name: "12345",
-        task_due: '08-11-2024',
-        UserId: 1,
-        ProjectId: 1,
-    },
-    {
-        task_name: "67890",
+        task_name: "Remove sink and toilet",
         task_due: '08-13-2024',
         UserId: 1,
         ProjectId: 1,
     },
     {
-        task_name: "13579",
-        task_due: '08-11-2024',
+        task_name: "Rip up tile",
+        task_due: '08-13-2024',
         UserId: 1,
         ProjectId: 1,
     },
     {
-        task_name: "24680",
+        task_name: "Lay new tile",
+        task_due: '08-15-2024',
+        UserId: 1,
+        ProjectId: 1,
+    },
+    {
+        task_name: "Meet with carpenter",
         task_due: '08-13-2024',
+        UserId: 2,
+        ProjectId: 2,
+    },
+    {
+        task_name: "Buy lumber",
+        task_due: '08-15-2024',
         UserId: 2,
         ProjectId: 2,
     },
