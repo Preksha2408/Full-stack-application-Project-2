@@ -26,6 +26,11 @@ Future Ideas
 -View a table of tasks with categories and filters
 -Month view
 
+Git hub repo : https://github.com/Preksha2408/Full-stack-application-Project-2.git
+
+Deployed Link : https://full-stack-application-project-2.onrender.com
+
+
 
 all good so far, we found out nodemailer is not for free, and switched to 
 
